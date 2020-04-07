@@ -14,7 +14,6 @@ console.log('word redactor extension running');
 for (var i = 0; i < everything.length; i++) {
   // Look at the full content
   var txt = everything[i].innerHTML;
-  //var s = "test the <img the> the";
 
   // This is a way of splitting up by tags.
   var tokens = txt.split(/(<.*?>)/);
@@ -22,21 +21,22 @@ for (var i = 0; i < everything.length; i++) {
     // Ignore anything that is a tag
     if (tokens[j].charAt(0) !== '<') {
       // Now replace the word "the" with "the" spanned with the class "redact"
-      tokens[j] = tokens[j].replace(/\bthe\b/gi,'<span class="redact">the</span>');
+      tokens[j] = tokens[j].replace(tokens[j], scramble(tokens[j], 3));
     }
   }
   // Put everything back in
   everything[i].innerHTML = tokens.join('');
 }
 
-function scramble(char, key){//input char and number of shifts
-  char.toUpperCase();
+function scramble(word, key){//input char and number of shifts
   let currentUnicode = 0;
   let newUnicode = 0;
+  let newWord= "";
 
-  for(var i = 0; i < word.length; i++){
-    currentUnicode = char.charCodeAt(i);
-    newUnicode = currentUnicode + key;
-    char.replace(String.fromCharCode(newUnicode));
-  }
+  for (var i = 0; i < word.length, i++ ) {
+    currentUnicode = charCodeAt(i);
+    newUnicode = currentUnicode + charCodeAt
+    newWord += String.fromCharCode(newUnicode)
+    }
+  return newWord;
 }
